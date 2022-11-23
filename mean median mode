@@ -1,0 +1,84 @@
+#include <stdio.h>
+void sort(int a[],int n)
+{
+    int temp;
+    int i,j,k;
+    for(i=0;i<n-1;i++)
+    {
+        for(j=0;j<n-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=a[j];
+            }
+        }
+    }
+    for(k=0;k<n;k++)
+    {
+        printf("%d\t",a[k]);
+    }
+}
+int mode(int a[],int n) {
+   int maxValue = 0, maxCount = 0, i, j;
+
+   for (i = 0; i < n; ++i) {
+      int count = 0;
+     
+      for (j = 0; j < n; ++j) {
+         if (a[j] == a[i])
+         ++count;
+      }
+     
+      if (count > maxCount) {
+         maxCount = count;
+         maxValue = a[i];
+      }
+   }
+   return maxValue;
+}
+int main()
+{
+    int i,n,s=0,m,a[1000],res;
+    printf("enter how many elements");
+    scanf("%d",&n);
+    printf("enter elements");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    for(i=0;i<n;i++)
+    {
+        s=s+a[i];
+    }
+    m=s/n;
+    printf("the mean is %d",m );
+  int median;
+ if ( n % 2 == 0)
+   median = (a[n/2] + a[n/2+1])/2.0 ;
+else
+   median = a[n/2 + 1];
+    printf("the median is %d",median);
+    printf("\n");
+    res=mode(a,n);
+printf(" mode is %d",res);
+    if(res==2)
+    printf("bimodal");
+    else if(res==3)
+    printf("  - tri modal");
+    int max,min;
+    for (int i = 0; i <n; i++) {    
+       
+       if(a[i] > max)    
+           max = a[i];    
+    }        
+      for (int i = 0; i <n; i++) {    
+       
+       if(a[i] < min)    
+           min = a[i];    
+    }  
+    int range=(max-min);
+    printf("\n");
+    printf(" range is %d",range);
+}
