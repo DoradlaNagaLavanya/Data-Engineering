@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main()
+{
+    int age[20]={30,30,31,41,41,42,32,29,29,42,21,32,33,45};
+    char income[20][10]={"High","High","High","Medium","Low","Low","Low","Medium","Low","Medium","Medium","Medium","High","Medium"};
+    char student[20][2]={"No","No","No","No","Yes","Yes","Yes","No","Yes","Yes","Yes","No","Yes","No"};
+    char c_r[20][6]={"Fair","Excellent","Fair","Fair","Fair","Excellent","Excellent","Fair","Fair","Fair","Excellent","Excellent","Fair","Excellent"};
+    char b_c[20][2]={"No","No","Yes","Yes","Yes","No","No","No","Yes","Yes","Yes","Yes","Yes","No"};
+    //x=(age<=30,income=m,student=y,c_r='fair')
+//x=(age<=30,income=m,student=y,c_r='fair')
+    float pc1,pc2,c1=0,c2=0;
+    int n=14;
+    float ay=0,an=0,sy=0,sn=0,iy=0,in=0,cy=0,cn=0,pay,psy,piy,pcy,pcn,pan,pin,psn;
+    for(int i=0;i<n;i++)
+    {
+        if(strcmp(b_c[i],"Yes")==0){
+            if(age[i]<=30)
+            ay=ay+1;
+        if(strcmp(student[i],"Yes")==0)
+        sy=sy+1;
+        if(strcmp(income[i],"Medium")==0)
+        iy=iy+1;
+        if(strcmp(c_r[i],"Fair")==0)
+        cy=cy+1;
+        c1=c1+1;
+        }
+        else{
+        if(age[i]<=30)
+        an=an+1;
+        if(strcmp(student[i],"Yes")==0)
+        sn=sn+1;
+        if(strcmp(income[i],"Medium")==0)
+        in=in+1;
+        if(strcmp(c_r[i],"Fair")==0)
+        cn=cn+1;
+        c2=c2+1;
+        }
+    }
+    printf("\nc1 %f\nc2 %f",c1,c2);
+    pc1=c1/n;
+    pc2=c2/n;
+    printf("\n%f\n%f",pc1,pc2);
+    pay=ay/c1;
+    pan=an/c2;
+    psy=sy/c1;
+    psn=sn/c2;
+    piy=iy/c1;
+    pin=in/c2;
+    pcy=cy/c1;
+    pcn=cn/c2;
+    printf("\n%f,%f,%f,%f",ay,iy,sy,cy);
+    printf("\n%f,%f,%f,%f",an,in,sn,cn);
+    printf("\n%f,%f,%f,%f",pay,piy,psy,pcy);
+    printf("\n%f,%f,%f,%f",pan,pin,psn,pcn);
+    float p1,p2;
+    p1=pay*psy*piy*pcy*pc1;
+    p2=pan*psn*pin*pcn*pc2;
+    printf("\n%f,%f",p1,p2);
+    if(p1>p2)
+    printf("\n%f",p1);
+    else
+    printf("\n%f",p2);
+    return 0;
+}
