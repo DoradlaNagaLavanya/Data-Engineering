@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include<math.h>
+#include<stdlib.h>
+
+void main()
+{
+    int k;
+    float h1,h2;
+    float a[10];
+    int n;
+    float m1,m2;
+    float l1[10],l2[10];
+    int c,count;
+    float sum1,mean1,sum2,mean2;
+    sum1=0;
+    sum2=0;
+   
+ 
+    printf("enter no of clusters to be formed");
+    scanf("%d",&k);
+    printf("enter no of data points");
+    scanf("%d",&n);
+    printf("enter all points");
+    for(int i=0;i<n;i++)
+    {
+        scanf("%f",&a[i]);
+    }
+    m1=a[2];
+    m2=a[n-4];
+
+    do{
+        c=0;
+        count=0;
+        sum1=0;
+        sum2=0;
+
+     
+    for(int i=0;i<n;i++)
+        {
+        if(abs(a[i]-m1)<abs(a[i]-m2))
+        {
+         
+           
+            l1[c]=a[i];
+            c=c+1;
+            sum1=sum1+a[i];
+        }
+        else
+        {
+           
+            l2[count]=a[i];
+            count=count+1;
+            sum2=sum2+a[i];
+        }
+       
+    }
+    mean1=m1;
+    mean2=m2;
+    m1=sum1/c;
+    m2=sum2/count;
+    }while(mean1!=m1 && mean2!=m2);
+
+   for(int i=0;i<c;i++)
+    {
+        printf("%f ",l1[i]);
+    }
+    printf("\n");
+   
+    for(int i=0;i<count;i++)
+    {
+        printf("%f ",l2[i]);
+    }
+    printf("\n");
+}
+
+
+
+OUTPUT:
+enter no of data points8
+enter all points2 10 2 5 8 4 5 8 7 5 6 4 1 2 4 9 
+2.000000 2.000000 4.000000 
+10.000000 5.000000 8.000000 5.000000 8.000000 
+
+
